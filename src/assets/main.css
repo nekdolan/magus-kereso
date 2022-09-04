@@ -1,0 +1,15 @@
+
+#app {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+    min-height: 100vh;
+}
+
+#app > * {
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+}

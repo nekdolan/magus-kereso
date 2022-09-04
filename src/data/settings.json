@@ -1,0 +1,253 @@
+[
+  {
+    "name": "varazslatok",
+    "label": "Varázslatok",
+    "inputs": [
+      {
+        "label": "Varázslat",
+        "key": "varazslat",
+        "component": "n-auto-complete",
+        "default": "",
+        "type": "search",
+        "props": {
+          "placeholder": "Írd be a név részletét...",
+          "clearable": true
+        }
+      },
+      {
+        "label": "Mágiafajta",
+        "key": "magiafajta",
+        "component": "n-select",
+        "index": true,
+        "default": null,
+        "type": "single",
+        "props": {
+          "placeholder": "Válassz....",
+          "clearable": true
+        }
+      },
+      {
+        "label": "Típus",
+        "key": "tipus",
+        "component": "n-select",
+        "index": true,
+        "default": [],
+        "type": "list",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true
+        }
+      },
+      {
+        "label": "Manapont",
+        "key": "manapont",
+        "component": "n-slider",
+        "default": [0, 0],
+        "type": "range",
+        "props": {
+          "placeholder": "Válassz kettőt...",
+          "min": 0,
+          "max": 120,
+          "range": true,
+          "step": "5"
+        }
+      },
+      {
+        "label": "Erősség",
+        "key": "erosseg",
+        "component": "n-slider",
+        "default": [0, 0],
+        "type": "range",
+        "props": {
+          "placeholder": "Válassz kettőt...",
+          "min": 0,
+          "max": 150,
+          "range": true,
+          "step": "5"
+        }
+      },
+      {
+        "label": "Varázslás Ideje",
+        "key": "varazslas ideje",
+        "component": "n-select",
+        "index": true,
+        "default": [],
+        "type": "list",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true
+        }
+      },
+      {
+        "label": "Időtartam",
+        "key": "idotartam",
+        "component": "n-select",
+        "index": true,
+        "default": [],
+        "type": "list",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true
+        }
+      },
+      {
+        "label": "Hatótáv",
+        "key": "hatotav",
+        "component": "n-select",
+        "index": true,
+        "default": [],
+        "type": "list",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true
+        }
+      },
+      {
+        "label": "Mágiaellenállás",
+        "key": "magiaellenallas",
+        "component": "n-select",
+        "index": true,
+        "default": [],
+        "type": "list",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true
+        }
+      },
+      {
+        "label": "Szféra",
+        "key": "szfera",
+        "component": "n-select",
+        "default": [],
+        "type": "listing",
+        "props": {
+          "placeholder": "Válassz többet....",
+          "multiple": true,
+          "clearable": true,
+          "options": [
+            {
+              "label": "lélek",
+              "value": "lelek"
+            },
+            {
+              "label": "halál",
+              "value": "halal"
+            },
+            {
+              "label": "élet",
+              "value": "elet"
+            },
+            {
+              "label": "természet",
+              "value": "termeszet"
+            },
+            {
+              "label": "egyedi",
+              "value": "egyedi"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Arkánum",
+        "key": "arkanum",
+        "component": "n-select",
+        "default": null,
+        "type": "single",
+        "props": {
+          "placeholder": "Válassz egyet....",
+          "clearable": true,
+          "options": [
+            {
+              "label": "Kis",
+              "value": "kis"
+            },
+            {
+              "label": "Nagy",
+              "value": "nagy"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Isten",
+        "key": "isten",
+        "component": "n-select",
+        "default": null,
+        "type": "single",
+        "index": true,
+        "props": {
+          "placeholder": "Válassz egyet....",
+          "clearable": true,
+          "options": [
+            {
+              "label": "Kis",
+              "value": "kis"
+            },
+            {
+              "label": "Nagy",
+              "value": "nagy"
+            }
+          ]
+        }
+      }
+    ],
+    "headers": [
+      "varazslat",
+      "magiafajta",
+      "tipus",
+      "manapont",
+      "erosseg",
+      "varazslas ideje",
+      "idotartam",
+      "hatotav",
+      "magiaellenallas",
+      "szfera",
+      "arkanum",
+      "isten",
+      "betegseg szintje",
+      "hatasa",
+      "sebzes",
+      "leiras"
+    ],
+    "table": [
+      {
+        "key": "varazslat"
+      },
+      {
+        "key": "magiafajta"
+      },
+      {
+        "key": "tipus"
+      },
+      {
+        "key": "manapont",
+        "ellipsis": true
+      }
+    ],
+    "keys": {
+      "varazslat": "varázslat",
+      "magiafajta": "mágiafajta",
+      "tipus": "típus",
+      "manapont": "manapont",
+      "erosseg": "erősség",
+      "varazslas ideje": "varázslás ideje",
+      "idotartam": "időtartam",
+      "hatotav": "hatótáv",
+      "magiaellenallas": "mágiaellenállás",
+      "szfera": "szféra",
+      "arkanum": "arkánum",
+      "isten": "isten",
+      "betegseg szintje": "betegség szintje",
+      "hatasa": "hatása",
+      "sebzes": "Sebzés",
+      "leiras": "leírás"
+    },
+    "full": ["leiras"]
+  }
+]
