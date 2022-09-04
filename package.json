@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node ./src/parse.cjs && vite",
     "build": "node ./src/parse.cjs && vite build",
-    "docs": "npm run build && cp -r ./dist ./docs",
+    "docs": "BUILD_BASE_PATH=\"https://nekdolan.github.io/magus-kereso/\" npm run build && rm -r ./docs && cp -r ./dist ./docs",
     "preview": "vite preview --port 4173",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
