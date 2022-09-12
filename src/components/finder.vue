@@ -1,14 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { Search12Regular } from "@vicons/fluent";
 
-const props = defineProps([
-  "title",
-  "search",
-  "width",
-  "setting",
-  "items",
-]);
+const props = defineProps(["title", "search", "width", "setting", "itemCount"]);
 const emit = defineEmits(["update:search"]);
 
 const active = ref(false);
@@ -19,9 +13,11 @@ const clear = () => {
 };
 const update = (key, value) => {
   const search = { ...props.search, [key]: value };
-  console.log(key, value);
   emit("update:search", search);
 };
+const fullTitle = computed(() => {
+  return `${props.title} (${props.itemCount})`;
+});
 </script>
 <template>
   <n-drawer
@@ -30,7 +26,7 @@ const update = (key, value) => {
     placement="left"
     :width="Math.min(502, width)"
   >
-    <n-drawer-content :title="title" closable>
+    <n-drawer-content :title="fullTitle" closable>
       <n-form label-placement="left" size="medium" label-width="auto">
         <n-form-item
           :label-placement="width < 502 ? 'top' : 'left'"

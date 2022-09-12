@@ -159,19 +159,10 @@
         "component": "n-select",
         "default": null,
         "type": "single",
+        "index": true,
         "props": {
           "placeholder": "Válassz egyet....",
-          "clearable": true,
-          "options": [
-            {
-              "label": "Kis",
-              "value": "kis"
-            },
-            {
-              "label": "Nagy",
-              "value": "nagy"
-            }
-          ]
+          "clearable": true
         }
       },
       {
@@ -183,17 +174,7 @@
         "index": true,
         "props": {
           "placeholder": "Válassz egyet....",
-          "clearable": true,
-          "options": [
-            {
-              "label": "Kis",
-              "value": "kis"
-            },
-            {
-              "label": "Nagy",
-              "value": "nagy"
-            }
-          ]
+          "clearable": true
         }
       }
     ],

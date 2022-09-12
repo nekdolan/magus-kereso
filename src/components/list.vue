@@ -1,7 +1,7 @@
 <script setup>
-import { ref, computed, watch, reactive, h } from "vue";
+import { ref, computed, watch } from "vue";
 import _ from "lodash/fp";
-import { filterItems } from "../search";
+import { filterItems } from "@/search";
 
 const props = defineProps([
   "searchData",
@@ -11,30 +11,18 @@ const props = defineProps([
   "appWidth",
 ]);
 
-const emit = defineEmits(["openItem"]);
-
-// const shortHeaderList = computed(() => {
-//   return _.compose(
-//     _.map(({ key }) => key),
-//     _.reject(({ ellipsis }) => ellipsis)
-//   )(props.setting.table);
-// });
-
-// const orderItems = _.orderBy(
-//   // ["kaszt", "fotipus", "szint"],
-//   shortHeaderList.value,
-//   // [],
-//   _.map(() => "asc")(shortHeaderList.value)
-//   //["desc", "desc", "desc"]
-// );
-
-const shortList = ref(filterItems(props.setting, {}));
+const emit = defineEmits(["openItem", "update:index", "update:item-count"]);
+const shortList = ref(filterItems(props.setting, {}).list);
 
 watch(
   () => props.searchData,
   _.debounce(200, (searchData) => {
-    shortList.value = filterItems(props.setting, searchData);
-  })
+    const filtered = filterItems(props.setting, searchData);
+    shortList.value = filtered.list;
+    emit("update:index", filtered.index);
+    emit("update:item-count", shortList.value.length);
+  }),
+  { immediate: true }
 );
 
 const generateKey = _.compose(

@@ -2,11 +2,12 @@
 import _ from "lodash/fp";
 import { computed, ref, onMounted, onUnmounted } from "vue";
 import { darkTheme } from "naive-ui";
-import { ArrowCircleDown12Regular } from "@vicons/fluent";
-import Finder from "./components/finder.vue";
-import List from "./components/list.vue";
-import Card from "./components/card.vue";
-import { itemLists, settings } from "./search";
+import { ChevronDown12Regular } from "@vicons/fluent";
+import Finder from "@/components/finder.vue";
+import List from "@/components/list.vue";
+import Card from "@/components/card.vue";
+import settings from "@/data/settings.json";
+import { getIndexedSetting } from "@/search";
 
 const settingName = ref(settings[0].name);
 const container = ref(null);
@@ -17,6 +18,8 @@ let windowHeight = ref(0);
 let windowWidth = ref(0);
 let cardActive = ref(false);
 let cardData = ref(null);
+let indexes = ref({});
+let itemFoundCount = ref(0);
 
 try {
   isIframe =
@@ -43,11 +46,8 @@ const settingOptions = _.map(({ name, label }) => ({ label, key: name }))(
 );
 
 const setting = computed(() => {
-  return _.find(["name", settingName.value])(settings);
-});
-
-const items = computed(() => {
-  return itemLists[settingName.value];
+  const setting = _.find(["name", settingName.value])(settings);
+  return getIndexedSetting(setting, indexes.value);
 });
 
 const maxDisplay = computed(() => {
@@ -94,8 +94,8 @@ function openItem(item) {
         title="Kártya Keresés"
         v-model:search="searchData"
         :width="appWidth"
-        :items="items"
         :setting="setting"
+        :item-count="itemFoundCount"
       >
         <n-h2>
           <n-dropdown
@@ -106,7 +106,7 @@ function openItem(item) {
             <n-button type="info">
               <template #icon>
                 <n-icon>
-                  <ArrowCircleDown12Regular />
+                  <ChevronDown12Regular />
                 </n-icon>
               </template>
               {{ setting.label }}
@@ -120,8 +120,11 @@ function openItem(item) {
         :max-display="maxDisplay"
         :app-width="appWidth"
         :app-height="appHeight"
+        v-model:index="indexes"
+        v-model:item-count="itemFoundCount"
         @open-item="openItem"
       >
+        <!--        @update-index="indexes = $event"-->
       </list>
     </main>
   </n-config-provider>
